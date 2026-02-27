@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Tsiory Ny Antsa</title>
-    <!-- Google Fonts Montserrat (gardé) -->
+    <!-- Google Fonts Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         /* ===== RESET & BASE ===== */
@@ -18,7 +18,7 @@
         body {
             background: #f4efe6;
             color: #222;
-            /* Fade In global (animation 1) */
+            /* Fade In global */
             animation: fadeIn 1.5s ease-in-out;
         }
 
@@ -78,24 +78,62 @@
             margin-bottom: 20px;
         }
 
-        .left img {
+        /* IMAGE avec animations multiples */
+        .profile-img {
             width: 300px;
             height: 300px;
             border-radius: 50%;
             object-fit: cover;
-            animation: popIn 1.2s ease-out;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 4px solid #3b44f6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            
+            /* Animation d'entrée */
+            animation: popInRotate 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Transition pour le hover */
+            transition: all 0.5s ease;
         }
 
-        .left img:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        /* Animation d'entrée combinée */
+        @keyframes popInRotate {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            50% {
+                transform: scale(1.2) rotate(10deg);
+                filter: blur(0);
+            }
+            80% {
+                transform: scale(0.95) rotate(-2deg);
+            }
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            80% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
+        /* Hover animations sur l'image */
+        .profile-img:hover {
+            transform: scale(1.08) rotate(5deg);
+            border-color: #ff6b6b;
+            box-shadow: 0 20px 40px rgba(59, 68, 246, 0.5);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        /* Animation supplémentaire : pulse subtil sur l'image */
+        .profile-img {
+            animation: popInRotate 1.2s, softPulse 3s infinite 1.5s;
+        }
+
+        @keyframes softPulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(59, 68, 246, 0.2);
+            }
+            50% {
+                box-shadow: 0 15px 40px rgba(59, 68, 246, 0.5);
+            }
         }
 
         /* NOM sous l'image (animé) */
@@ -160,7 +198,7 @@
         .section:nth-child(1) { animation-delay: 0.2s; }
         .section:nth-child(2) { animation-delay: 0.4s; }
         .section:nth-child(3) { animation-delay: 0.6s; }
-        .section:nth-child(4) { animation-delay: 0.8s; } /* pour interests */
+        .section:nth-child(4) { animation-delay: 0.8s; }
 
         @keyframes fadeInUp {
             from { transform: translateY(30px); opacity: 0; }
@@ -322,7 +360,7 @@
             margin-top: 5px;
         }
 
-        /* ===== LETTRE DE BIENVENUE (animation spéciale) ===== */
+        /* ===== LETTRE DE BIENVENUE ===== */
         .welcome-letter {
             background: linear-gradient(135deg, #1e1b4b 0%, #3b44f6 100%);
             color: white;
@@ -416,13 +454,39 @@
             .container {
                 grid-template-columns: 1fr;
             }
-            .left img {
+            .profile-img {
                 display: block;
                 margin: 0 auto;
             }
             .left, .right {
                 animation: fadeIn 1s ease-out;
             }
+        }
+
+        /* ===== NOUVELLES ANIMATIONS POUR L'IMAGE ===== */
+        /* Effet de scintillement autour de l'image */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59,68,246,0.3) 0%, transparent 70%);
+            opacity: 0;
+            animation: glowPulse 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
     </style>
 </head>
@@ -431,7 +495,7 @@
     <!-- Barre supérieure -->
     <div class="bar">PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026</div>
 
-    <!-- LETTRE DE BIENVENUE (fusionnée) -->
+    <!-- LETTRE DE BIENVENUE -->
     <div class="welcome-letter">
         <h1>👋 Bienvenue sur mon Portfolio !</h1>
         <p>
@@ -455,8 +519,12 @@
         <!-- COLONNE GAUCHE -->
         <div class="left">
             <div class="profile-container">
-                <!-- Image (remplacer par le chemin réel) -->
-                <img src="./IMG_20260226_152915.jpg" alt="profile" height="300px" width="300px">
+                <!-- IMAGE avec classe spécifique pour animations -->
+                <img src="IMG_20260226_152915.jpg"alt="profile" 
+                     class="profile-img"
+                     height="300" 
+                     width="300">
+                
                 <!-- Nom animé -->
                 <div class="profile-name">
                     <span>T</span><span>s</span><span>i</span><span>o</span><span>r</span><span>y</span>&nbsp;
