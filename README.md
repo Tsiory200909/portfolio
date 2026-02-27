@@ -645,7 +645,7 @@
         <div class="left">
             <div class="profile-container">
                 <!-- IMAGE avec classe spécifique pour animations -->
-                <img src="IMG_20260226_152915.jpg" alt="profile" 
+                <img src="IMG_20260226_152915.jpg"                                                                                                      alt="profile" 
                      class="profile-img"
                      height="300" 
                      width="300">
