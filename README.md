@@ -1,4 +1,3 @@
-![IMG_20260226_152915](https://github.com/user-attachments/assets/202a9ae1-5631-4475-b062-8e181f947d83)<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -263,8 +262,7 @@
         <!-- LEFT -->
         <div class="left">
             <div class="profile-container">
-               <img src="IMG_20260226_152915.jpg"
-          " alt="Photo de profil" class="profile-image" id="profileImage">
+                <img src="./IMG_20260226_152915.jpg" alt="profile" height="300px" width="300px"
                     style="border-radius: 50%; object-fit: cover;">
 
                 <!-- NOM AJOUTÉ SOUS L'IMAGE -->
@@ -353,5 +351,4 @@
 </body>
 
 </html>
-  
 
