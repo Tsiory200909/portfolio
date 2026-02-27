@@ -577,7 +577,7 @@
                     <p>Créateur et designer de sites web (projets personnels, portfolio, pages statiques)</p>
                 </div>
                 <div class="timeline">
-                    <h4>Informatique de base</h4>
+                    <h4>Informatique des bases</h4>
                     <small>2026 - maintenant</small>
                     <p>Expérience bureautique (Word, Excel, PowerPoint) – maîtrise des outils essentiels</p>
                 </div>
