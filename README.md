@@ -76,6 +76,9 @@
         .profile-container {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
 
         /* IMAGE avec animations multiples */
@@ -92,6 +95,10 @@
             
             /* Transition pour le hover */
             transition: all 0.5s ease;
+            
+            /* Effet de brillance */
+            position: relative;
+            z-index: 2;
         }
 
         /* Animation d'entrée combinée */
@@ -136,9 +143,52 @@
             }
         }
 
+        /* Effet de scintillement autour de l'image */
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59,68,246,0.4) 0%, transparent 70%);
+            opacity: 0;
+            animation: glowPulse 3s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Effet de rotation d'anneau autour de l'image */
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 2px dashed rgba(59, 68, 246, 0.3);
+            animation: rotateRing 10s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes rotateRing {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
         /* NOM sous l'image (animé) */
         .profile-name {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 2em;
             font-weight: 900;
             color: #1e1b4b;
@@ -146,6 +196,7 @@
             display: inline-block;
             padding: 10px 30px;
             animation: nameGlow 3s ease-in-out infinite;
+            z-index: 3;
         }
 
         @keyframes nameGlow {
@@ -188,11 +239,27 @@
             50% { transform: translateY(-5px); }
         }
 
+        /* Animation pour chaque lettre avec délai */
+        .profile-name span:nth-child(1) { animation-delay: 0.1s; }
+        .profile-name span:nth-child(2) { animation-delay: 0.2s; }
+        .profile-name span:nth-child(3) { animation-delay: 0.3s; }
+        .profile-name span:nth-child(4) { animation-delay: 0.4s; }
+        .profile-name span:nth-child(5) { animation-delay: 0.5s; }
+        .profile-name span:nth-child(6) { animation-delay: 0.6s; }
+        .profile-name span:nth-child(7) { animation-delay: 0.7s; }
+        .profile-name span:nth-child(8) { animation-delay: 0.8s; }
+        .profile-name span:nth-child(9) { animation-delay: 0.9s; }
+        .profile-name span:nth-child(10) { animation-delay: 1s; }
+        .profile-name span:nth-child(11) { animation-delay: 1.1s; }
+        .profile-name span:nth-child(12) { animation-delay: 1.2s; }
+        .profile-name span:nth-child(13) { animation-delay: 1.3s; }
+
         /* ===== SECTIONS COMMUNES ===== */
         .section {
             margin-top: 30px;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            transition: all 0.3s ease;
         }
 
         .section:nth-child(1) { animation-delay: 0.2s; }
@@ -203,6 +270,10 @@
         @keyframes fadeInUp {
             from { transform: translateY(30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         .section h3 {
@@ -232,8 +303,15 @@
         /* ===== CONTACT ===== */
         .contact p {
             margin-bottom: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
+            animation: slideInRight 0.5s ease-out;
+            animation-fill-mode: both;
         }
+
+        .contact p:nth-child(1) { animation-delay: 0.1s; }
+        .contact p:nth-child(2) { animation-delay: 0.2s; }
+        .contact p:nth-child(3) { animation-delay: 0.3s; }
+        .contact p:nth-child(4) { animation-delay: 0.4s; }
 
         .contact p:hover {
             transform: translateX(10px);
@@ -255,12 +333,32 @@
             font-weight: 700;
             transition: all 0.3s ease;
             animation: skillPulse 2s infinite;
+            position: relative;
+            overflow: hidden;
         }
 
         @keyframes skillPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        .skill-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            20% { transform: translateX(100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         .skill-box:hover {
@@ -284,12 +382,29 @@
             font-size: 14px;
             transition: all 0.3s ease;
             animation: tagFloat 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
         }
 
         @keyframes tagFloat {
             0% { transform: translateY(0); }
             50% { transform: translateY(-3px); }
             100% { transform: translateY(0); }
+        }
+
+        .tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59,68,246,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tag:hover::before {
+            left: 100%;
         }
 
         .tag:hover {
@@ -306,16 +421,35 @@
             font-weight: 900;
             margin-bottom: 15px;
             animation: slideInRight 1s ease-out;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #3b44f6;
+            transition: width 0.5s ease;
+        }
+
+        .about:hover h2::after {
+            width: 100%;
         }
 
         .about p {
             line-height: 1.6;
             margin-bottom: 30px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         .about p:hover {
             color: #3b44f6;
+            transform: translateX(10px);
         }
 
         .timeline {
@@ -325,6 +459,8 @@
             transition: all 0.3s ease;
             animation: fadeInScale 0.8s ease-out;
             animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
         }
 
         .timeline:nth-child(1) { animation-delay: 0.2s; }
@@ -334,6 +470,21 @@
         @keyframes fadeInScale {
             from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: #3b44f6;
+            transition: height 0.3s ease;
+        }
+
+        .timeline:hover::before {
+            height: 100%;
         }
 
         .timeline:hover {
@@ -462,32 +613,6 @@
                 animation: fadeIn 1s ease-out;
             }
         }
-
-        /* ===== NOUVELLES ANIMATIONS POUR L'IMAGE ===== */
-        /* Effet de scintillement autour de l'image */
-        .profile-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-container::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59,68,246,0.3) 0%, transparent 70%);
-            opacity: 0;
-            animation: glowPulse 3s infinite;
-            pointer-events: none;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
     </style>
 </head>
 <body>
@@ -520,7 +645,7 @@
         <div class="left">
             <div class="profile-container">
                 <!-- IMAGE avec classe spécifique pour animations -->
-                <img src="IMG_20260226_152915.jpg"alt="profile" 
+                <img src="IMG_20260226_152915.jpg" alt="profile" 
                      class="profile-img"
                      height="300" 
                      width="300">
