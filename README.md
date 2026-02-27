@@ -1,13 +1,53 @@
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Tsiory Ny Antsa</title>
-
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css Tsiory.css">
+    
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #f4efe6;
+            color: #222;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Animation pour la barre */
+        .bar {
+            background: #1e1b4b;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            letter-spacing: 2px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         /* Animation pour la lettre de bienvenue */
         .welcome-letter {
             background: linear-gradient(135deg, #1e1b4b 0%, #3b44f6 100%);
@@ -29,11 +69,9 @@
                 transform: scale(0.5) rotate(-5deg);
                 opacity: 0;
             }
-
             50% {
                 transform: scale(1.1) rotate(2deg);
             }
-
             100% {
                 transform: scale(1) rotate(0);
                 opacity: 1;
@@ -66,11 +104,9 @@
             0% {
                 transform: rotate(15deg) translateY(0);
             }
-
             50% {
                 transform: rotate(15deg) translateY(-20px);
             }
-
             100% {
                 transform: rotate(15deg) translateY(0);
             }
@@ -89,7 +125,6 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
-
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -102,6 +137,17 @@
             max-width: 800px;
             margin: 0 auto 20px;
             animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .welcome-signature {
@@ -117,19 +163,9 @@
         }
 
         @keyframes wave {
-
-            0%,
-            100% {
-                transform: rotate(0);
-            }
-
-            25% {
-                transform: rotate(15deg);
-            }
-
-            75% {
-                transform: rotate(-15deg);
-            }
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
         }
 
         /* Style pour le nom sous l'image */
@@ -150,13 +186,10 @@
         }
 
         @keyframes nameGlow {
-
-            0%,
-            100% {
+            0%, 100% {
                 text-shadow: 0 0 10px rgba(59, 68, 246, 0.3);
                 transform: scale(1);
             }
-
             50% {
                 text-shadow: 0 0 20px rgba(59, 68, 246, 0.7);
                 transform: scale(1.05);
@@ -164,6 +197,7 @@
         }
 
         .profile-name::before {
+            content: '⚡';
             position: absolute;
             left: -10px;
             top: 50%;
@@ -173,6 +207,7 @@
         }
 
         .profile-name::after {
+            content: '⚡';
             position: absolute;
             right: -10px;
             top: 50%;
@@ -182,13 +217,8 @@
         }
 
         @keyframes starSpin {
-            from {
-                transform: translateY(-50%) rotate(0deg);
-            }
-
-            to {
-                transform: translateY(-50%) rotate(360deg);
-            }
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
         }
 
         .profile-name span {
@@ -197,18 +227,267 @@
         }
 
         @keyframes letterBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+        }
+
+        /* Animation pour les sections */
+        .left {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
             }
-
-            50% {
-                transform: translateY(-5px);
+            to {
+                transform: translateX(0);
+                opacity: 1;
             }
         }
 
-        /* Style pour les titres corrigés */
+        .right {
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animation pour la photo */
+        .left img {
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            object-fit: cover;
+            animation: popIn 1.2s ease-out;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .left img:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .section {
+            margin-top: 30px;
+            animation: fadeInSection 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInSection {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .section h3 {
+            color: #3b44f6;
+            font-weight: 900;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #3b44f6;
+            transition: width 0.5s ease;
+        }
+
+        .section:hover h3::after {
+            width: 100%;
+        }
+
+        .contact p {
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact p:hover {
+            transform: translateX(10px);
+            color: #3b44f6;
+        }
+
+        .skills {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .skill-box {
+            background: #000;
+            color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            animation: skillPulse 2s infinite;
+        }
+
+        @keyframes skillPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .skill-box:hover {
+            background: #3b44f6;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(59, 68, 246, 0.4);
+            animation: none;
+        }
+
+        .about h2 {
+            color: #3b44f6;
+            font-weight: 900;
+            margin-bottom: 15px;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .about p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .about p:hover {
+            color: #3b44f6;
+        }
+
+        .timeline {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .timeline:nth-child(1) { animation-delay: 0.2s; }
+        .timeline:nth-child(2) { animation-delay: 0.4s; }
+        .timeline:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .timeline:hover {
+            background: rgba(59, 68, 246, 0.1);
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline h4 {
+            font-weight: 700;
+        }
+
+        .timeline small {
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .timeline:hover small {
+            color: #3b44f6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            animation: tagFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes tagFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+            100% { transform: translateY(0); }
+        }
+
+        .tag:hover {
+            background: #3b44f6;
+            color: white;
+            border-color: #3b44f6;
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        @media(max-width:900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left img {
+                display: block;
+                margin: 0 auto;
+            }
+
+            .left, .right {
+                animation: fadeIn 1s ease-out;
+            }
+        }
+
+        /* Correction des balises et styles supplémentaires */
         .about h2 {
             color: #3b44f6;
             font-weight: 900;
@@ -219,13 +498,6 @@
         .timeline h4 {
             font-weight: 700;
             margin: 0;
-        }
-
-        /* Correction des balises fermantes */
-        .about h2 {
-            color: #3b44f6;
-            font-weight: 900;
-            margin-bottom: 15px;
         }
 
         .timeline p {
@@ -252,7 +524,7 @@
             à créer des expériences numériques uniques.
         </p>
         <div class="welcome-signature">
-            <span></span> Tsiory Ny Antsa <span></span>
+            <span>✨</span> Tsiory Ny Antsa <span>✨</span>
         </div>
     </div>
 
@@ -261,8 +533,7 @@
         <!-- LEFT -->
         <div class="left">
             <div class="profile-container">
-                <img src="./IMG_20260226_152915.jpg" alt="profile" height="300px" width="300px"
-                    style="border-radius: 50%; object-fit: cover;">
+                <img src="./IMG_20260226_152915.jpg" alt="profile" height="300px" width="300px">
 
                 <!-- NOM AJOUTÉ SOUS L'IMAGE -->
                 <div class="profile-name">
