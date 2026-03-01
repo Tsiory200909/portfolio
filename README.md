@@ -806,7 +806,7 @@
                 <div class="profile-image-wrapper">
                     <img src="https://scontent.ftnr2-2.fna.fbcdn.net/v/t39.30808-6/645751332_122112903753211419_5620609322743338792_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=N_hr6gbaj04Q7kNvwGPZw3r&_nc_oc=AdnzD8scRuebFW-ks8X9NZj60aE1fCz4rjUB0UAb26iL6r8shn_PsV1sEUpmloB51A4&_nc_zt=23&_nc_ht=scontent.ftnr2-2.fna&_nc_gid=65jiCVUPFzZ5MX-FVklNGw&_nc_ss=8&oh=00_Aft1pAUdpapyPz79IlZTRdfKzhwYzMlr1jDpMxZSuHOAYg&oe=69AA5AB9"
                         alt="Photo de profil Tsiory Ny Antsa"
-                        onerror="this.classList.add('error'); this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%231e1b4b%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22150%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ETsiory%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                        onerror="this.classList.add('error'); this.src='data:https://scontent.ftnr2-2.fna.fbcdn.net/v/t39.30808-6/645751332_122112903753211419_5620609322743338792_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=N_hr6gbaj04Q7kNvwGPZw3r&_nc_oc=AdnzD8scRuebFW-ks8X9NZj60aE1fCz4rjUB0UAb26iL6r8shn_PsV1sEUpmloB51A4&_nc_zt=23&_nc_ht=scontent.ftnr2-2.fna&_nc_gid=65jiCVUPFzZ5MX-FVklNGw&_nc_ss=8&oh=00_Aft1pAUdpapyPz79IlZTRdfKzhwYzMlr1jDpMxZSuHOAYg&oe=69AA5AB9">
                     <div class="image-fallback">📸</div>
                 </div>
 
