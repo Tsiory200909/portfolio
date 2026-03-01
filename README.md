@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Tsiory Ny Antsa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Portfolio · Tsiory Ny Antsa (responsive)</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
     <style>
+        /* === RESET & VARIABLES === */
         * {
             margin: 0;
             padding: 0;
@@ -18,766 +17,389 @@
         body {
             background: #f4efe6;
             color: #222;
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1.2s ease;
+            width: 100%;
             overflow-x: hidden;
         }
 
-        /* Animations globales */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+        /* === ANIMATIONS (conservées + ajustements) === */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 80% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes fadeInUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes skillPulse { 0% { box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4); } 50% { box-shadow: 0 0 0 10px rgba(59, 68, 246, 0); } }
+        @keyframes tagFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @keyframes welcomePop { 0% { transform: scale(0.6) rotate(-3deg); opacity: 0; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+        @keyframes nameGlow { 0%,100% { text-shadow: 0 0 8px rgba(59,68,246,0.4); letter-spacing: 1px; } 50% { text-shadow: 0 0 20px rgba(255,215,0,0.6); letter-spacing: 3px; } }
+        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes borderPulse { 0%,100% { border-color: #3b44f6; } 50% { border-color: gold; } }
 
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            80% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes skillPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4);
-            }
-
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(59, 68, 246, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(59, 68, 246, 0);
-            }
-        }
-
-        @keyframes tagFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes welcomePop {
-            0% {
-                transform: scale(0.5) rotate(-5deg);
-                opacity: 0;
-            }
-
-            50% {
-                transform: scale(1.1) rotate(2deg);
-            }
-
-            100% {
-                transform: scale(1) rotate(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes floatEmoji {
-            0% {
-                transform: rotate(15deg) translateY(0);
-            }
-
-            50% {
-                transform: rotate(15deg) translateY(-20px);
-            }
-
-            100% {
-                transform: rotate(15deg) translateY(0);
-            }
-        }
-
-        @keyframes slideInDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes wave {
-
-            0%,
-            100% {
-                transform: rotate(0);
-            }
-
-            25% {
-                transform: rotate(15deg);
-            }
-
-            75% {
-                transform: rotate(-15deg);
-            }
-        }
-
-        @keyframes nameGlow {
-
-            0%,
-            100% {
-                text-shadow: 0 0 10px rgba(59, 68, 246, 0.3);
-                letter-spacing: 2px;
-            }
-
-            50% {
-                text-shadow: 0 0 20px rgba(59, 68, 246, 0.7);
-                letter-spacing: 4px;
-            }
-        }
-
-        @keyframes starSpin {
-            from {
-                transform: translateY(-50%) rotate(0deg);
-            }
-
-            to {
-                transform: translateY(-50%) rotate(360deg);
-            }
-        }
-
-        @keyframes letterBounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes gradientFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes borderPulse {
-
-            0%,
-            100% {
-                border-color: #3b44f6;
-            }
-
-            50% {
-                border-color: #ff6b6b;
-            }
-        }
-
-        /* Barre de navigation */
+        /* === BAR (header/footer) === */
         .bar {
             background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b);
             background-size: 200% 100%;
             color: #fff;
-            padding: 12px;
+            padding: clamp(8px, 2vw, 14px);
             text-align: center;
-            font-size: 14px;
-            letter-spacing: 2px;
-            animation: slideDown 0.8s ease-out, gradientFlow 3s ease infinite;
+            font-size: clamp(12px, 2.5vw, 16px);
+            letter-spacing: 1.5px;
+            animation: slideDown 0.7s, gradientFlow 4s infinite;
             font-weight: 700;
             text-transform: uppercase;
             border-bottom: 2px solid gold;
+            border-top: 2px solid gold;
+            word-break: keep-all;
+            white-space: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE */
         }
+        .bar::-webkit-scrollbar { display: none; }
+        .bar:first-of-type { border-bottom: 2px solid gold; }
+        .bar:last-of-type { border-top: 2px solid gold; }
 
-        /* Lettre de bienvenue */
+        /* === LETTRE BIENVENUE (flexible) === */
         .welcome-letter {
-            background: linear-gradient(135deg, #1e1b4b 0%, #3b44f6 50%, #1e1b4b 100%);
+            background: linear-gradient(135deg, #1e1b4b, #3b44f6, #1e1b4b);
             background-size: 200% 200%;
             color: white;
-            padding: 50px 20px;
+            padding: clamp(25px, 6vw, 50px) clamp(15px, 5vw, 30px);
             text-align: center;
-            margin: 30px auto;
+            margin: 20px auto;
             border-radius: 30px;
-            width: 90%;
-            max-width: 1200px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: welcomePop 1.5s ease-out, gradientFlow 5s ease infinite;
+            width: 95%;
+            max-width: 1300px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: welcomePop 1.2s, gradientFlow 6s infinite;
+            border: 3px solid gold;
             position: relative;
             overflow: hidden;
-            border: 3px solid gold;
-        }
-
-        .welcome-letter::before {
-            content: '✉️';
-            font-size: 80px;
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            opacity: 0.1;
-            transform: rotate(15deg);
-            animation: floatEmoji 3s ease-in-out infinite;
-        }
-
-        .welcome-letter::after {
-            content: '💻';
-            font-size: 90px;
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            opacity: 0.1;
-            transform: rotate(-15deg);
-            animation: floatEmoji 4s ease-in-out infinite reverse;
         }
 
         .welcome-letter h1 {
-            font-size: 3.5em;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-            animation: slideInDown 0.8s ease-out 0.5s both;
-            position: relative;
-            display: inline-block;
-        }
-
-        .welcome-letter h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, gold, transparent);
-            animation: borderPulse 2s infinite;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            word-break: break-word;
         }
 
         .welcome-letter p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            animation: fadeInUp 0.8s ease-out 0.8s both;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 0.75rem auto;
+            background: rgba(255,255,255,0.1);
+            padding: clamp(8px, 2.5vw, 15px);
+            border-radius: 18px;
+            backdrop-filter: blur(4px);
+            transition: 0.2s;
         }
-
-        .welcome-letter p:hover {
-            transform: scale(1.02);
-            transition: transform 0.3s ease;
-            background: rgba(255, 255, 255, 0.2);
-        }
+        .welcome-letter p:hover { transform: scale(1.01); background: rgba(255,255,255,0.2); }
 
         .welcome-signature {
-            font-size: 2em;
-            font-style: italic;
-            margin-top: 40px;
-            animation: fadeIn 1s ease-out 1.2s both;
+            font-size: clamp(1.5rem, 5vw, 2.3rem);
+            margin-top: 25px;
             font-weight: 700;
-            text-shadow: 0 0 15px gold;
+            text-shadow: 0 0 10px gold;
+            word-break: break-word;
         }
 
-        .welcome-signature span {
-            display: inline-block;
-            animation: wave 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px gold);
-        }
-
-        /* Container principal */
+        /* === CONTAINER PRINCIPAL (responsive grid) === */
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 50px auto;
+            width: 95%;
+            max-width: 1300px;
+            margin: 30px auto;
             display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 40px;
-            position: relative;
+            grid-template-columns: 1fr 2fr; /* 40% / 60% approximatif */
+            gap: clamp(15px, 3vw, 40px);
+            transition: all 0.2s;
         }
 
-        /* Sidebar gauche */
-        .left {
-            animation: slideInLeft 1s ease-out;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 30px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+        /* SIDEBAR & RIGHT (même style adaptatif) */
+        .left, .right {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            padding: clamp(15px, 3vw, 30px);
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255,255,255,0.6);
+            transition: transform 0.2s, box-shadow 0.3s;
+            width: 100%;
         }
+        .left { animation: slideInLeft 0.9s; }
+        .right { animation: slideInRight 0.9s; }
 
+        /* ===== PHOTO DE PROFIL : responsive, jamais déformée ===== */
         .profile-container {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             position: relative;
         }
-
-        .profile-container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px solid transparent;
-            border-radius: 50%;
-            background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: starSpin 4s linear infinite;
-        }
-
-        /* CORRECTION: Gestion améliorée de l'image */
         .profile-image-wrapper {
             position: relative;
-            width: 280px;
-            height: 280px;
+            width: min(280px, 65vw); /* s'adapte jusqu'à 280px, mais pas plus de 65% viewport width */
+            height: min(280px, 65vw);
             margin: 0 auto;
             border-radius: 50%;
             overflow: hidden;
             border: 5px solid gold;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
-
         .profile-image-wrapper:hover {
-            transform: scale(1.05) rotate(5deg);
+            transform: scale(1.03) rotate(2deg);
             border-color: #3b44f6;
-            box-shadow: 0 20px 40px rgba(59, 68, 246, 0.4);
         }
-
         .profile-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover;  /* Garde le ratio, crop centré */
             display: block;
-            transition: all 0.5s ease;
+            background: #1e1b4b;
         }
-
-        /* Fallback élégant si l'image ne charge pas */
+        /* fallback si image non chargée */
         .profile-image-wrapper img.error {
             opacity: 0;
         }
-
-        .profile-image-wrapper .image-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1e1b4b, #3b44f6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: gold;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+        .image-fallback {
+            display: none; /* simplifié, car on utilise le src fallback via onerror */
         }
 
-        .profile-image-wrapper img.error+.image-fallback {
-            opacity: 1;
-        }
-
+        /* NOM sous photo */
         .profile-name {
-            margin-top: 25px;
-            font-size: 2.2em;
+            margin-top: 20px;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
             font-weight: 900;
-            color: #1e1b4b;
-            position: relative;
-            display: inline-block;
-            padding: 10px 40px;
-            animation: nameGlow 3s ease-in-out infinite;
             background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
+            animation: nameGlow 3s infinite;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0 3px;
+            letter-spacing: 2px;
         }
-
-        .profile-name::before {
-            content: '⭐';
-            position: absolute;
-            left: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            animation: starSpin 3s linear infinite;
-        }
-
-        .profile-name::after {
-            content: '⭐';
-            position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            animation: starSpin 3s linear infinite reverse;
-        }
-
         .profile-name span {
             display: inline-block;
-            animation: letterBounce 2s ease-in-out infinite;
-            animation-delay: calc(0.1s * var(--i));
+            animation: letterBounce 2s infinite;
+            animation-delay: calc(0.08s * var(--i));
         }
+        @keyframes letterBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-        /* Sections communes */
+        /* sections communes */
         .section {
-            margin-top: 35px;
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
-            padding: 20px;
+            margin: 35px 0 25px;
+            padding: 18px 15px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(4px);
+            transition: 0.25s;
         }
-
-        .section:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .section:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .section:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .section:nth-child(4) {
-            animation-delay: 0.8s;
-        }
-
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(59, 68, 246, 0.2);
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 12px 25px rgba(59,68,246,0.15);
         }
-
         .section h3 {
-            color: #3b44f6;
+            color: #1e1b4b;
             font-weight: 900;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 18px;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            border-left: 5px solid gold;
+            padding-left: 12px;
         }
 
-        .section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b44f6, gold);
-            transition: width 0.5s ease;
-            border-radius: 2px;
-        }
-
-        .section:hover h3::after {
-            width: 100%;
-        }
-
-        /* Contact */
+        /* contact items */
         .contact p {
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-weight: 500;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 40px;
+            background: white;
+            font-weight: 600;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            transition: 0.2s;
+            word-break: break-word;
         }
-
         .contact p:hover {
-            transform: translateX(15px);
-            background: linear-gradient(90deg, #3b44f6 0%, transparent 100%);
+            background: #3b44f6;
             color: white;
-            box-shadow: 0 5px 15px rgba(59, 68, 246, 0.3);
+            transform: translateX(8px);
         }
 
-        /* Skills */
+        /* skills boites */
         .skills {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
-
         .skill-box {
-            background: linear-gradient(135deg, #000, #1e1b4b);
+            background: linear-gradient(145deg, #1e1b4b, #000);
             color: #fff;
-            padding: 15px 25px;
-            border-radius: 50px;
+            padding: 12px 22px;
+            border-radius: 60px;
             font-weight: 700;
-            transition: all 0.4s ease;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
             animation: skillPulse 3s infinite;
             border: 2px solid transparent;
-            font-size: 1.1em;
-            letter-spacing: 1px;
+            transition: 0.25s;
         }
-
         .skill-box:hover {
-            background: linear-gradient(135deg, #3b44f6, gold);
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(59, 68, 246, 0.4);
+            background: #3b44f6;
+            transform: scale(1.1) translateY(-5px);
+            border-color: gold;
             animation: none;
-            border-color: white;
         }
 
-        /* Languages */
+        /* languages (p) */
         .section p {
-            font-size: 1.1em;
-            padding: 8px 0;
-            transition: all 0.3s ease;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            padding: 6px 0;
+            font-weight: 500;
         }
-
-        .section p:hover {
-            transform: scale(1.05);
-            color: #3b44f6;
-            font-weight: 700;
-        }
-
-        /* Tags */
+        /* tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
         }
-
         .tag {
             border: 2px solid #1e1b4b;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            animation: tagFloat 4s ease-in-out infinite;
+            padding: 8px 16px;
+            border-radius: 40px;
             font-weight: 600;
             background: white;
+            animation: tagFloat 4s infinite;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            transition: 0.2s;
         }
-
         .tag:hover {
-            background: linear-gradient(135deg, #3b44f6, gold);
+            background: linear-gradient(130deg, gold, #3b44f6);
             color: white;
             border-color: transparent;
-            transform: scale(1.15) rotate(2deg);
+            transform: scale(1.1) rotate(1deg);
             animation: none;
-            box-shadow: 0 10px 20px rgba(59, 68, 246, 0.3);
         }
 
-        /* Partie droite */
-        .right {
-            animation: slideInRight 1s ease-out;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 30px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
+        /* right: about + timeline */
         .about h2 {
-            color: #3b44f6;
+            color: #1e1b4b;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             font-weight: 900;
-            margin-bottom: 20px;
-            animation: slideInRight 1s ease-out;
-            font-size: 2em;
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
-
         .about h2::after {
             content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
+            display: block;
+            width: 70px;
             height: 4px;
-            background: linear-gradient(90deg, #3b44f6, gold);
-            border-radius: 2px;
-            transition: width 0.3s ease;
+            background: gold;
+            margin-top: 5px;
+            transition: width 0.3s;
         }
-
-        .about:hover h2::after {
-            width: 100%;
-        }
+        .about:hover h2::after { width: 100%; }
 
         .about p {
-            line-height: 1.8;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.5);
+            padding: 16px 18px;
+            border-radius: 25px;
+            font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+            line-height: 1.7;
         }
 
-        .about p:hover {
-            color: #1e1b4b;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(59, 68, 246, 0.2);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Timeline */
+        /* timeline (exp/education) */
         .timeline {
-            margin-bottom: 25px;
-            padding: 20px;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
-            background: rgba(255, 255, 255, 0.5);
-            border-left: 4px solid transparent;
+            margin: 25px 0;
+            padding: 18px 20px;
+            background: white;
+            border-radius: 18px;
+            border-left: 5px solid transparent;
+            transition: 0.25s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
-        .timeline:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .timeline:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .timeline:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
         .timeline:hover {
-            background: linear-gradient(90deg, rgba(59, 68, 246, 0.1), rgba(255, 215, 0, 0.1));
-            transform: translateX(15px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-left: 4px solid #3b44f6;
+            border-left-color: #3b44f6;
+            transform: translateX(5px) scale(1.01);
+            background: #faf8ff;
         }
-
-        .timeline h4 {
-            font-weight: 900;
-            margin: 0 0 5px 0;
-            font-size: 1.3em;
-            color: #1e1b4b;
-        }
-
+        .timeline h4 { font-size: clamp(1.1rem, 3vw, 1.3rem); color: #1e1b4b; }
         .timeline small {
-            color: #666;
-            transition: all 0.3s ease;
+            background: #eef;
+            padding: 4px 14px;
+            border-radius: 30px;
             font-weight: 600;
             display: inline-block;
-            padding: 3px 10px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
+            margin: 6px 0;
         }
+        .timeline p { margin-top: 8px; font-style: italic; }
 
-        .timeline:hover small {
-            color: #fff;
-            background: #3b44f6;
-            transform: scale(1.05);
-        }
-
-        .timeline p {
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        /* Responsive */
-        @media(max-width:900px) {
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media screen and (max-width: 850px) {
             .container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* passage en colonne unique */
                 gap: 20px;
             }
-
+            .left, .right {
+                animation: fadeIn 0.8s; /* plus simple */
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
             .profile-image-wrapper {
-                width: 250px;
-                height: 250px;
-            }
-
-            .left,
-            .right {
-                animation: fadeIn 1s ease-out;
-                padding: 20px;
-            }
-
-            .welcome-letter h1 {
-                font-size: 2.5em;
+                width: min(250px, 50vw);
+                height: min(250px, 50vw);
             }
         }
+
+        @media screen and (max-width: 550px) {
+            .welcome-letter {
+                width: 98%;
+                padding: 20px 12px;
+            }
+            .welcome-letter h1 { font-size: 1.9rem; }
+            .container { width: 98%; }
+            .section { padding: 12px; }
+            .skill-box { padding: 10px 18px; }
+            .profile-name { letter-spacing: 1px; }
+        }
+
+        /* très petits écrans (pliage 300-400px) */
+        @media screen and (max-width: 380px) {
+            .profile-image-wrapper {
+                width: 200px;
+                height: 200px;
+            }
+            .profile-name { font-size: 1.4rem; }
+            .bar { font-size: 10px; }
+            .tag { padding: 5px 12px; }
+        }
+
+        /* orientation paysage sur mobile */
+        @media screen and (max-height: 550px) and (orientation: landscape) {
+            .profile-image-wrapper { width: 170px; height: 170px; }
+            .container { margin-top: 15px; }
+        }
+
+        /* ajustement pour très grands écrans (> 1600px) */
+        @media screen and (min-width: 1600px) {
+            .container { max-width: 1500px; gap: 50px; }
+            .profile-image-wrapper { width: 320px; height: 320px; }
+        }
+
+        /* correction petits details */
+        .section:first-of-type { margin-top: 0; }
+        .section p i { margin-right: 6px; }
+        .profile-container { position: relative; }
     </style>
 </head>
-
 <body>
     <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 
@@ -800,25 +422,21 @@
     </div>
 
     <div class="container">
-        <!-- LEFT -->
+        <!-- LEFT : SIDEBAR -->
         <div class="left">
             <div class="profile-container">
                 <div class="profile-image-wrapper">
-                    <!-- Image de profil avec gestion d'erreur simplifiée -->
+                    <!-- image avec fallback direct (via placeholder) -->
                     <img src="https://scontent.ftnr2-2.fna.fbcdn.net/v/t39.30808-6/645751332_122112903753211419_5620609322743338792_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=N_hr6gbaj04Q7kNvwGPZw3r&_nc_oc=AdnzD8scRuebFW-ks8X9NZj60aE1fCz4rjUB0UAb26iL6r8shn_PsV1sEUpmloB51A4&_nc_zt=23&_nc_ht=scontent.ftnr2-2.fna&_nc_gid=65jiCVUPFzZ5MX-FVklNGw&_nc_ss=8&oh=00_Aft1pAUdpapyPz79IlZTRdfKzhwYzMlr1jDpMxZSuHOAYg&oe=69AA5AB9"
-                        alt="Photo de profil Tsiory Ny Antsa"
-                        onerror="this.onerror=null; this.src='https://via.placeholder.com/280x280/1e1b4b/gold?text=TNA';">
-                    <div class="image-fallback">📸</div>
+                         alt="Photo Tsiory Ny Antsa"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA'; this.classList.add('error')">
                 </div>
 
-                <!-- NOM SOUS L'IMAGE -->
+                <!-- NOM SOUS L'IMAGE avec lettre animée -->
                 <div class="profile-name">
-                    <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span
-                        style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span
-                        style="--i:7">&nbsp;</span>
-                    <span style="--i:8">N</span><span style="--i:9">y</span><span style="--i:10">&nbsp;</span>
-                    <span style="--i:11">A</span><span style="--i:12">n</span><span style="--i:13">t</span><span
-                        style="--i:14">s</span><span style="--i:15">a</span>
+                    <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span style="--i:7"> </span>
+                    <span style="--i:8">N</span><span style="--i:9">y</span><span style="--i:10"> </span>
+                    <span style="--i:11">A</span><span style="--i:12">n</span><span style="--i:13">t</span><span style="--i:14">s</span><span style="--i:15">a</span>
                 </div>
             </div>
 
@@ -844,7 +462,7 @@
                 <h3>🗣️ LANGUAGES</h3>
                 <p>🇲🇬 MALAGASY – Langue maternelle</p>
                 <p>🇫🇷 FRANÇAIS – Courant</p>
-                <p>ANGLAIS - Courant</p>
+                <p>🇬🇧 ANGLAIS – Courant</p>
             </div>
 
             <div class="section">
@@ -858,7 +476,7 @@
             </div>
         </div>
 
-        <!-- RIGHT -->
+        <!-- RIGHT : CONTENU PRINCIPAL -->
         <div class="right">
             <div class="about">
                 <h2>À PROPOS DE MOI</h2>
@@ -893,6 +511,20 @@
     </div>
 
     <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
-</body>
 
+    <!-- petit script pour s'assurer que l'image ne casse pas la mise en page (fallback déjà présent) -->
+    <script>
+        (function() {
+            // Au cas où l'image ne charge pas, on a déjà un fallback via onerror.
+            // Mais on s'assure que les images avec erreur restent discrètes.
+            const img = document.querySelector('.profile-image-wrapper img');
+            if (img) {
+                img.addEventListener('error', function(e) {
+                    this.src = 'https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA';
+                    this.alt = 'Tsiory (fallback)';
+                });
+            }
+        })();
+    </script>
+</body>
 </html>
