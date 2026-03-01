@@ -18,6 +18,7 @@
             background: #f4efe6;
             color: #222;
             animation: fadeIn 1.5s ease-in-out;
+            overflow-x: hidden;
         }
 
         /* Animations globales */
@@ -52,21 +53,15 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes fadeInScale {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
         @keyframes skillPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(59, 68, 246, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 68, 246, 0); }
         }
 
         @keyframes tagFloat {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-            100% { transform: translateY(0); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         @keyframes welcomePop {
@@ -75,7 +70,7 @@
             100% { transform: scale(1) rotate(0); opacity: 1; }
         }
 
-        @keyframes float {
+        @keyframes floatEmoji {
             0% { transform: rotate(15deg) translateY(0); }
             50% { transform: rotate(15deg) translateY(-20px); }
             100% { transform: rotate(15deg) translateY(0); }
@@ -93,8 +88,8 @@
         }
 
         @keyframes nameGlow {
-            0%, 100% { text-shadow: 0 0 10px rgba(59, 68, 246, 0.3); transform: scale(1); }
-            50% { text-shadow: 0 0 20px rgba(59, 68, 246, 0.7); transform: scale(1.05); }
+            0%, 100% { text-shadow: 0 0 10px rgba(59, 68, 246, 0.3); letter-spacing: 2px; }
+            50% { text-shadow: 0 0 20px rgba(59, 68, 246, 0.7); letter-spacing: 4px; }
         }
 
         @keyframes starSpin {
@@ -107,61 +102,91 @@
             50% { transform: translateY(-5px); }
         }
 
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes borderPulse {
+            0%, 100% { border-color: #3b44f6; }
+            50% { border-color: #ff6b6b; }
+        }
+
         /* Barre de navigation */
         .bar {
-            background: #1e1b4b;
+            background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b);
+            background-size: 200% 100%;
             color: #fff;
-            padding: 8px;
+            padding: 12px;
             text-align: center;
             font-size: 14px;
             letter-spacing: 2px;
-            animation: slideDown 0.8s ease-out;
+            animation: slideDown 0.8s ease-out, gradientFlow 3s ease infinite;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 2px solid gold;
         }
 
         /* Lettre de bienvenue */
         .welcome-letter {
-            background: linear-gradient(135deg, #1e1b4b 0%, #3b44f6 100%);
+            background: linear-gradient(135deg, #1e1b4b 0%, #3b44f6 50%, #1e1b4b 100%);
+            background-size: 200% 200%;
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
-            margin: 20px auto;
-            border-radius: 20px;
+            margin: 30px auto;
+            border-radius: 30px;
             width: 90%;
             max-width: 1200px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: welcomePop 1.5s ease-out;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: welcomePop 1.5s ease-out, gradientFlow 5s ease infinite;
             position: relative;
             overflow: hidden;
+            border: 3px solid gold;
         }
 
         .welcome-letter::before {
             content: '✉️';
-            font-size: 50px;
+            font-size: 80px;
             position: absolute;
             top: -20px;
             left: -20px;
             opacity: 0.1;
             transform: rotate(15deg);
-            animation: float 3s ease-in-out infinite;
+            animation: floatEmoji 3s ease-in-out infinite;
         }
 
         .welcome-letter::after {
             content: '💻';
-            font-size: 60px;
+            font-size: 90px;
             position: absolute;
-            bottom: -20px;
-            right: -20px;
+            bottom: -30px;
+            right: -30px;
             opacity: 0.1;
             transform: rotate(-15deg);
-            animation: float 4s ease-in-out infinite reverse;
+            animation: floatEmoji 4s ease-in-out infinite reverse;
         }
 
         .welcome-letter h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             font-weight: 900;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
             animation: slideInDown 0.8s ease-out 0.5s both;
+            position: relative;
+            display: inline-block;
+        }
+
+        .welcome-letter h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, gold, transparent);
+            animation: borderPulse 2s infinite;
         }
 
         .welcome-letter p {
@@ -170,118 +195,180 @@
             max-width: 800px;
             margin: 0 auto 20px;
             animation: fadeInUp 0.8s ease-out 0.8s both;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-letter p:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .welcome-signature {
-            font-size: 1.5em;
+            font-size: 2em;
             font-style: italic;
-            margin-top: 30px;
+            margin-top: 40px;
             animation: fadeIn 1s ease-out 1.2s both;
+            font-weight: 700;
+            text-shadow: 0 0 15px gold;
         }
 
         .welcome-signature span {
             display: inline-block;
             animation: wave 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px gold);
         }
 
         /* Container principal */
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 50px auto;
             display: grid;
             grid-template-columns: 40% 60%;
             gap: 40px;
+            position: relative;
         }
 
         /* Sidebar gauche */
         .left {
             animation: slideInLeft 1s ease-out;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .profile-container {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: starSpin 4s linear infinite;
         }
 
         .left img {
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
             animation: popIn 1.2s ease-out;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: all 0.5s ease;
+            border: 5px solid gold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .left img:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 20px 40px rgba(59, 68, 246, 0.4);
+            border-color: #3b44f6;
         }
 
         .profile-name {
-            margin-top: 20px;
-            font-size: 2em;
+            margin-top: 25px;
+            font-size: 2.2em;
             font-weight: 900;
             color: #1e1b4b;
             position: relative;
             display: inline-block;
-            padding: 10px 30px;
+            padding: 10px 40px;
             animation: nameGlow 3s ease-in-out infinite;
+            background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
         }
 
         .profile-name::before {
             content: '⭐';
             position: absolute;
-            left: -10px;
+            left: -5px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2em;
-            animation: starSpin 4s linear infinite;
+            font-size: 1.5em;
+            animation: starSpin 3s linear infinite;
         }
 
         .profile-name::after {
             content: '⭐';
             position: absolute;
-            right: -10px;
+            right: -5px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2em;
-            animation: starSpin 4s linear infinite reverse;
+            font-size: 1.5em;
+            animation: starSpin 3s linear infinite reverse;
         }
 
         .profile-name span {
             display: inline-block;
             animation: letterBounce 2s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--i));
         }
 
         /* Sections communes */
         .section {
-            margin-top: 30px;
+            margin-top: 35px;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
         .section:nth-child(1) { animation-delay: 0.2s; }
         .section:nth-child(2) { animation-delay: 0.4s; }
         .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 68, 246, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+        }
 
         .section h3 {
             color: #3b44f6;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             position: relative;
             display: inline-block;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .section h3::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
-            height: 3px;
-            background: #3b44f6;
+            height: 4px;
+            background: linear-gradient(90deg, #3b44f6, gold);
             transition: width 0.5s ease;
+            border-radius: 2px;
         }
 
         .section:hover h3::after {
@@ -290,13 +377,18 @@
 
         /* Contact */
         .contact p {
-            margin-bottom: 8px;
-            transition: transform 0.3s ease;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-weight: 500;
         }
 
         .contact p:hover {
-            transform: translateX(10px);
-            color: #3b44f6;
+            transform: translateX(15px);
+            background: linear-gradient(90deg, #3b44f6 0%, transparent 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(59, 68, 246, 0.3);
         }
 
         /* Skills */
@@ -307,76 +399,130 @@
         }
 
         .skill-box {
-            background: #000;
+            background: linear-gradient(135deg, #000, #1e1b4b);
             color: #fff;
-            padding: 15px;
-            border-radius: 15px;
+            padding: 15px 25px;
+            border-radius: 50px;
             font-weight: 700;
-            transition: all 0.3s ease;
-            animation: skillPulse 2s infinite;
+            transition: all 0.4s ease;
+            animation: skillPulse 3s infinite;
+            border: 2px solid transparent;
+            font-size: 1.1em;
+            letter-spacing: 1px;
         }
 
         .skill-box:hover {
-            background: #3b44f6;
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(59, 68, 246, 0.4);
+            background: linear-gradient(135deg, #3b44f6, gold);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(59, 68, 246, 0.4);
             animation: none;
+            border-color: white;
+        }
+
+        /* Languages */
+        .section p {
+            font-size: 1.1em;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .section p:hover {
+            transform: scale(1.05);
+            color: #3b44f6;
+            font-weight: 700;
         }
 
         /* Tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .tag {
-            border: 1px solid #333;
-            padding: 6px 12px;
-            border-radius: 20px;
+            border: 2px solid #1e1b4b;
+            padding: 8px 18px;
+            border-radius: 30px;
             font-size: 14px;
             transition: all 0.3s ease;
-            animation: tagFloat 3s ease-in-out infinite;
+            animation: tagFloat 4s ease-in-out infinite;
+            font-weight: 600;
+            background: white;
         }
 
         .tag:hover {
-            background: #3b44f6;
+            background: linear-gradient(135deg, #3b44f6, gold);
             color: white;
-            border-color: #3b44f6;
-            transform: scale(1.1);
+            border-color: transparent;
+            transform: scale(1.15) rotate(2deg);
             animation: none;
+            box-shadow: 0 10px 20px rgba(59, 68, 246, 0.3);
         }
 
         /* Partie droite */
         .right {
             animation: slideInRight 1s ease-out;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .about h2 {
             color: #3b44f6;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             animation: slideInRight 1s ease-out;
+            font-size: 2em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b44f6, gold);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .about:hover h2::after {
+            width: 100%;
         }
 
         .about p {
-            line-height: 1.6;
+            line-height: 1.8;
             margin-bottom: 30px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .about p:hover {
-            color: #3b44f6;
+            color: #1e1b4b;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 68, 246, 0.2);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         /* Timeline */
         .timeline {
             margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            animation: fadeInScale 0.8s ease-out;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 4px solid transparent;
         }
 
         .timeline:nth-child(1) { animation-delay: 0.2s; }
@@ -384,50 +530,83 @@
         .timeline:nth-child(3) { animation-delay: 0.6s; }
 
         .timeline:hover {
-            background: rgba(59, 68, 246, 0.1);
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, rgba(59, 68, 246, 0.1), rgba(255, 215, 0, 0.1));
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid #3b44f6;
         }
 
         .timeline h4 {
-            font-weight: 700;
-            margin: 0;
+            font-weight: 900;
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+            color: #1e1b4b;
         }
 
         .timeline small {
-            color: #555;
-            transition: color 0.3s ease;
+            color: #666;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
         }
 
         .timeline:hover small {
-            color: #3b44f6;
+            color: #fff;
+            background: #3b44f6;
+            transform: scale(1.05);
         }
 
         .timeline p {
-            margin-top: 5px;
+            margin-top: 10px;
+            font-style: italic;
         }
 
         /* Responsive */
         @media(max-width:900px) {
             .container {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .left img {
-                display: block;
-                margin: 0 auto;
+                width: 250px;
+                height: 250px;
             }
 
             .left,
             .right {
                 animation: fadeIn 1s ease-out;
+                padding: 20px;
             }
+
+            .welcome-letter h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Correction du défaut : fallback image */
+        img {
+            background: linear-gradient(135deg, #1e1b4b, #3b44f6);
+            position: relative;
+        }
+
+        img::after {
+            content: '📸';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
         }
     </style>
 </head>
 
 <body>
-    <div class="bar">PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026</div>
+    <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 
     <!-- LETTRE DE BIENVENUE -->
     <div class="welcome-letter">
@@ -451,26 +630,26 @@
         <!-- LEFT -->
         <div class="left">
             <div class="profile-container">
-                <img src="./IMG_20260226_152915.jpg" alt="profile" onerror="this.src='https://via.placeholder.com/300?text=Photo+Profile'">
+                <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/645504955_122112858903211419_123032914395931939_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qlVCyunwGmEQ7kNvwEn2tHj&_nc_oc=AdlZ0GmiTd7KUUFWBturpoLdodKayO1iI3wlFEK3Uzv_V8Y-jR71eQaspVphFUAkniE&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=QMPgvf9zhzPaTMTt6mp1Mw&_nc_ss=8&oh=00_Afsc4tq5y3YLQ3pPIkkmcQQsw9I2G3dGXQNhdXugBLrYQA&oe=69A9F8E0" alt="Photo de profil Tsiory Ny Antsa" onerror="this.src='https://via.placeholder.com/300/1e1b4b/ffffff?text=Tsiory'">
                 
                 <!-- NOM SOUS L'IMAGE -->
                 <div class="profile-name">
-                    <span>T</span><span>s</span><span>i</span><span>o</span><span>r</span><span>y</span>&nbsp;
-                    <span>N</span><span>y</span>&nbsp;
-                    <span>A</span><span>n</span><span>t</span><span>s</span><span>a</span>
+                    <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span style="--i:7">&nbsp;</span>
+                    <span style="--i:8">N</span><span style="--i:9">y</span><span style="--i:10">&nbsp;</span>
+                    <span style="--i:11">A</span><span style="--i:12">n</span><span style="--i:13">t</span><span style="--i:14">s</span><span style="--i:15">a</span>
                 </div>
             </div>
 
             <div class="section contact">
-                <h3>CONTACT</h3>
+                <h3>📱 CONTACT</h3>
                 <p>📞 0385907180 - 0334127027</p>
-                <p>🎂 26 - 09 - 2009</p>
+                <p>🎂 26 Septembre 2009</p>
                 <p>📧 andrianantenainatsiorynyantsa@gmail.com</p>
-                <p>💬 WHATSAPP ==> 0334127027</p>
+                <p>💬 WHATSAPP: 0334127027</p>
             </div>
 
             <div class="section">
-                <h3>TECHNICAL SKILLS</h3>
+                <h3>💻 TECHNICAL SKILLS</h3>
                 <div class="skills">
                     <div class="skill-box">CSS</div>
                     <div class="skill-box">HTML</div>
@@ -480,18 +659,18 @@
             </div>
 
             <div class="section">
-                <h3>LANGUAGES</h3>
-                <p>🇲🇬 MALGACHE – Native</p>
-                <p>🇫🇷 FRANCAIS</p>
+                <h3>🗣️ LANGUAGES</h3>
+                <p>🇲🇬 MALGACHE – Langue maternelle</p>
+                <p>🇫🇷 FRANÇAIS – Courant</p>
             </div>
 
             <div class="section">
-                <h3>INTERESTS</h3>
+                <h3>🎯 INTERESTS</h3>
                 <div class="tags">
-                    <div class="tag">Design</div>
-                    <div class="tag">Music</div>
-                    <div class="tag">Cinema</div>
-                    <div class="tag">Jeu video</div>
+                    <div class="tag">🎨 Design</div>
+                    <div class="tag">🎵 Musique</div>
+                    <div class="tag">🎬 Cinéma</div>
+                    <div class="tag">🎮 Jeux vidéo</div>
                 </div>
             </div>
         </div>
@@ -499,36 +678,36 @@
         <!-- RIGHT -->
         <div class="right">
             <div class="about">
-                <h2>A PROPOS DE MOI</h2>
-                <p>Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce domaine passionnant.</p>
+                <h2>À PROPOS DE MOI</h2>
+                <p>✨ Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce domaine passionnant. Chaque jour est une nouvelle opportunité d'apprendre et de créer !</p>
             </div>
 
             <div class="section">
-                <h3>EDUCATION</h3>
+                <h3>🎓 EDUCATION</h3>
                 <div class="timeline">
-                    <h4>EMIT Fianaratsoa</h4>
-                    <small>2026 - Maintenant</small>
+                    <h4>EMIT Fianarantsoa</h4>
+                    <small>2026 - Présent</small>
+                    <p>Études en informatique et développement web</p>
                 </div>
             </div>
 
             <div class="section">
-                <h3>EXPERIENCE</h3>
+                <h3>💼 EXPERIENCE</h3>
                 <div class="timeline">
                     <h4>Création de sites web</h4>
-                    <small>2026 - Maintenant</small>
-                    <p>Créateur et designer de sites web</p>
+                    <small>2026 - Présent</small>
+                    <p>Créateur et designer de sites web - Développement de projets personnels</p>
                 </div>
 
                 <div class="timeline">
                     <h4>Informatique de base</h4>
-                    <small>2026 - Maintenant</small>
-                    <p>Expérience bureautique (Word, Excel, PowerPoint)</p>
+                    <small>2026 - Présent</small>
+                    <p>Maîtrise des outils bureautiques (Word, Excel, PowerPoint)</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="bar">PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026</div>
+    <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 </body>
 </html>
-
