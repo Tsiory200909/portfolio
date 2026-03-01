@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Tsiory Ny Antsa</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -23,94 +24,226 @@
 
         /* Animations globales */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            80% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes skillPulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(59, 68, 246, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 68, 246, 0); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(59, 68, 246, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 68, 246, 0);
+            }
         }
 
         @keyframes tagFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         @keyframes welcomePop {
-            0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
-            50% { transform: scale(1.1) rotate(2deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
+            0% {
+                transform: scale(0.5) rotate(-5deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(2deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
         }
 
         @keyframes floatEmoji {
-            0% { transform: rotate(15deg) translateY(0); }
-            50% { transform: rotate(15deg) translateY(-20px); }
-            100% { transform: rotate(15deg) translateY(0); }
+            0% {
+                transform: rotate(15deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(15deg) translateY(-20px);
+            }
+
+            100% {
+                transform: rotate(15deg) translateY(0);
+            }
         }
 
         @keyframes slideInDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes wave {
-            0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(15deg); }
-            75% { transform: rotate(-15deg); }
+
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+
+            25% {
+                transform: rotate(15deg);
+            }
+
+            75% {
+                transform: rotate(-15deg);
+            }
         }
 
         @keyframes nameGlow {
-            0%, 100% { text-shadow: 0 0 10px rgba(59, 68, 246, 0.3); letter-spacing: 2px; }
-            50% { text-shadow: 0 0 20px rgba(59, 68, 246, 0.7); letter-spacing: 4px; }
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px rgba(59, 68, 246, 0.3);
+                letter-spacing: 2px;
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(59, 68, 246, 0.7);
+                letter-spacing: 4px;
+            }
         }
 
         @keyframes starSpin {
-            from { transform: translateY(-50%) rotate(0deg); }
-            to { transform: translateY(-50%) rotate(360deg); }
+            from {
+                transform: translateY(-50%) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-50%) rotate(360deg);
+            }
         }
 
         @keyframes letterBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes borderPulse {
-            0%, 100% { border-color: #3b44f6; }
-            50% { border-color: #ff6b6b; }
+
+            0%,
+            100% {
+                border-color: #3b44f6;
+            }
+
+            50% {
+                border-color: #ff6b6b;
+            }
         }
 
         /* Barre de navigation */
@@ -317,7 +450,7 @@
             pointer-events: none;
         }
 
-        .profile-image-wrapper img.error + .image-fallback {
+        .profile-image-wrapper img.error+.image-fallback {
             opacity: 1;
         }
 
@@ -374,10 +507,21 @@
             transition: all 0.3s ease;
         }
 
-        .section:nth-child(1) { animation-delay: 0.2s; }
-        .section:nth-child(2) { animation-delay: 0.4s; }
-        .section:nth-child(3) { animation-delay: 0.6s; }
-        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.8s;
+        }
 
         .section:hover {
             transform: translateY(-5px);
@@ -562,9 +706,17 @@
             border-left: 4px solid transparent;
         }
 
-        .timeline:nth-child(1) { animation-delay: 0.2s; }
-        .timeline:nth-child(2) { animation-delay: 0.4s; }
-        .timeline:nth-child(3) { animation-delay: 0.6s; }
+        .timeline:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline:nth-child(3) {
+            animation-delay: 0.6s;
+        }
 
         .timeline:hover {
             background: linear-gradient(90deg, rgba(59, 68, 246, 0.1), rgba(255, 215, 0, 0.1));
@@ -652,17 +804,20 @@
         <div class="left">
             <div class="profile-container">
                 <div class="profile-image-wrapper">
-                    <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/645504955_122112858903211419_123032914395931939_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qlVCyunwGmEQ7kNvwEn2tHj&_nc_oc=AdlZ0GmiTd7KUUFWBturpoLdodKayO1iI3wlFEK3Uzv_V8Y-jR71eQaspVphFUAkniE&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=QMPgvf9zhzPaTMTt6mp1Mw&_nc_ss=8&oh=00_Afsc4tq5y3YLQ3pPIkkmcQQsw9I2G3dGXQNhdXugBLrYQA&oe=69A9F8E0" 
-                         alt="Photo de profil Tsiory Ny Antsa"
-                         onerror="this.classList.add('error'); this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%231e1b4b%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22150%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ETsiory%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    <img src="https://scontent.ftnr2-2.fna.fbcdn.net/v/t39.30808-6/645751332_122112903753211419_5620609322743338792_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=N_hr6gbaj04Q7kNvwGPZw3r&_nc_oc=AdnzD8scRuebFW-ks8X9NZj60aE1fCz4rjUB0UAb26iL6r8shn_PsV1sEUpmloB51A4&_nc_zt=23&_nc_ht=scontent.ftnr2-2.fna&_nc_gid=65jiCVUPFzZ5MX-FVklNGw&_nc_ss=8&oh=00_Aft1pAUdpapyPz79IlZTRdfKzhwYzMlr1jDpMxZSuHOAYg&oe=69AA5AB9"
+                        alt="Photo de profil Tsiory Ny Antsa"
+                        onerror="this.classList.add('error'); this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%231e1b4b%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22150%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ETsiory%3C%2Ftext%3E%3C%2Fsvg%3E';">
                     <div class="image-fallback">📸</div>
                 </div>
-                
+
                 <!-- NOM SOUS L'IMAGE -->
                 <div class="profile-name">
-                    <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span style="--i:7">&nbsp;</span>
+                    <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span
+                        style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span
+                        style="--i:7">&nbsp;</span>
                     <span style="--i:8">N</span><span style="--i:9">y</span><span style="--i:10">&nbsp;</span>
-                    <span style="--i:11">A</span><span style="--i:12">n</span><span style="--i:13">t</span><span style="--i:14">s</span><span style="--i:15">a</span>
+                    <span style="--i:11">A</span><span style="--i:12">n</span><span style="--i:13">t</span><span
+                        style="--i:14">s</span><span style="--i:15">a</span>
                 </div>
             </div>
 
@@ -686,8 +841,9 @@
 
             <div class="section">
                 <h3>🗣️ LANGUAGES</h3>
-                <p>🇲🇬 MALGACHE – Langue maternelle</p>
+                <p>🇲🇬 MALAGASY – Langue maternelle</p>
                 <p>🇫🇷 FRANÇAIS – Courant</p>
+                <p>ANGLAIS - Courant</p>
             </div>
 
             <div class="section">
@@ -705,7 +861,8 @@
         <div class="right">
             <div class="about">
                 <h2>À PROPOS DE MOI</h2>
-                <p>✨ Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce domaine passionnant. Chaque jour est une nouvelle opportunité d'apprendre et de créer !</p>
+                <p>✨ Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce
+                    domaine passionnant. Chaque jour est une nouvelle opportunité d'apprendre et de créer !</p>
             </div>
 
             <div class="section">
@@ -736,4 +893,5 @@
 
     <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 </body>
+
 </html>
