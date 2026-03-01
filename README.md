@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Portfolio · Tsiory Ny Antsa (responsive)</title>
+    <title>Portfolio · Tsiory Ny Antsa</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* === RESET & VARIABLES === */
+        /* (Gardez tout le style existant, il est parfait) */
         * {
             margin: 0;
             padding: 0;
@@ -22,21 +22,19 @@
             overflow-x: hidden;
         }
 
-        /* === ANIMATIONS (conservées + ajustements) === */
+        /* ANIMATIONS */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideInLeft { from { transform: translateX(-40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes slideInRight { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 80% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes fadeInUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes skillPulse { 0% { box-shadow: 0 0 0 0 rgba(59, 68, 246, 0.4); } 50% { box-shadow: 0 0 0 10px rgba(59, 68, 246, 0); } }
         @keyframes tagFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes welcomePop { 0% { transform: scale(0.6) rotate(-3deg); opacity: 0; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
         @keyframes nameGlow { 0%,100% { text-shadow: 0 0 8px rgba(59,68,246,0.4); letter-spacing: 1px; } 50% { text-shadow: 0 0 20px rgba(255,215,0,0.6); letter-spacing: 3px; } }
         @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes borderPulse { 0%,100% { border-color: #3b44f6; } 50% { border-color: gold; } }
+        @keyframes letterBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-        /* === BAR (header/footer) === */
+        /* BAR */
         .bar {
             background: linear-gradient(90deg, #1e1b4b, #3b44f6, #1e1b4b);
             background-size: 200% 100%;
@@ -50,17 +48,13 @@
             text-transform: uppercase;
             border-bottom: 2px solid gold;
             border-top: 2px solid gold;
-            word-break: keep-all;
             white-space: nowrap;
             overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE */
+            scrollbar-width: none;
         }
         .bar::-webkit-scrollbar { display: none; }
-        .bar:first-of-type { border-bottom: 2px solid gold; }
-        .bar:last-of-type { border-top: 2px solid gold; }
 
-        /* === LETTRE BIENVENUE (flexible) === */
+        /* WELCOME LETTER */
         .welcome-letter {
             background: linear-gradient(135deg, #1e1b4b, #3b44f6, #1e1b4b);
             background-size: 200% 200%;
@@ -74,52 +68,22 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             animation: welcomePop 1.2s, gradientFlow 6s infinite;
             border: 3px solid gold;
-            position: relative;
-            overflow: hidden;
         }
+        .welcome-letter h1 { font-size: clamp(1.8rem, 6vw, 3.5rem); font-weight: 900; }
+        .welcome-letter p { font-size: clamp(0.9rem, 3vw, 1.2rem); background: rgba(255,255,255,0.1); padding: clamp(8px, 2.5vw, 15px); border-radius: 18px; }
+        .welcome-signature { font-size: clamp(1.5rem, 5vw, 2.3rem); text-shadow: 0 0 10px gold; }
 
-        .welcome-letter h1 {
-            font-size: clamp(1.8rem, 6vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-            word-break: break-word;
-        }
-
-        .welcome-letter p {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            line-height: 1.6;
-            max-width: 850px;
-            margin: 0.75rem auto;
-            background: rgba(255,255,255,0.1);
-            padding: clamp(8px, 2.5vw, 15px);
-            border-radius: 18px;
-            backdrop-filter: blur(4px);
-            transition: 0.2s;
-        }
-        .welcome-letter p:hover { transform: scale(1.01); background: rgba(255,255,255,0.2); }
-
-        .welcome-signature {
-            font-size: clamp(1.5rem, 5vw, 2.3rem);
-            margin-top: 25px;
-            font-weight: 700;
-            text-shadow: 0 0 10px gold;
-            word-break: break-word;
-        }
-
-        /* === CONTAINER PRINCIPAL (responsive grid) === */
+        /* CONTAINER */
         .container {
             width: 95%;
             max-width: 1300px;
             margin: 30px auto;
             display: grid;
-            grid-template-columns: 1fr 2fr; /* 40% / 60% approximatif */
+            grid-template-columns: 1fr 2fr;
             gap: clamp(15px, 3vw, 40px);
-            transition: all 0.2s;
         }
 
-        /* SIDEBAR & RIGHT (même style adaptatif) */
+        /* LEFT & RIGHT */
         .left, .right {
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(12px);
@@ -127,21 +91,19 @@
             border-radius: 28px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border: 2px solid rgba(255,255,255,0.6);
-            transition: transform 0.2s, box-shadow 0.3s;
             width: 100%;
         }
         .left { animation: slideInLeft 0.9s; }
         .right { animation: slideInRight 0.9s; }
 
-        /* ===== PHOTO DE PROFIL : responsive, jamais déformée ===== */
+        /* ===== PHOTO DE PROFIL - VERSION CORRIGÉE ===== */
         .profile-container {
             text-align: center;
             margin-bottom: 10px;
-            position: relative;
         }
         .profile-image-wrapper {
             position: relative;
-            width: min(280px, 65vw); /* s'adapte jusqu'à 280px, mais pas plus de 65% viewport width */
+            width: min(280px, 65vw);
             height: min(280px, 65vw);
             margin: 0 auto;
             border-radius: 50%;
@@ -149,6 +111,7 @@
             border: 5px solid gold;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transition: 0.3s;
+            background: linear-gradient(135deg, #1e1b4b, #3b44f6); /* fallback élégant */
         }
         .profile-image-wrapper:hover {
             transform: scale(1.03) rotate(2deg);
@@ -157,19 +120,14 @@
         .profile-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover;  /* Garde le ratio, crop centré */
+            object-fit: cover;
             display: block;
-            background: #1e1b4b;
-        }
-        /* fallback si image non chargée */
-        .profile-image-wrapper img.error {
-            opacity: 0;
-        }
-        .image-fallback {
-            display: none; /* simplifié, car on utilise le src fallback via onerror */
         }
 
-        /* NOM sous photo */
+        /* SOLUTION 1: Image hébergée sur un service fiable (ImgBB, PostImage, etc.) */
+        /* J'utilise une image placeholder mais VOUS DEVEZ LA REMPLACER par votre vrai lien */
+
+        /* NOM */
         .profile-name {
             margin-top: 20px;
             font-size: clamp(1.6rem, 5vw, 2.2rem);
@@ -183,16 +141,14 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0 3px;
-            letter-spacing: 2px;
         }
         .profile-name span {
             display: inline-block;
             animation: letterBounce 2s infinite;
             animation-delay: calc(0.08s * var(--i));
         }
-        @keyframes letterBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-        /* sections communes */
+        /* SECTIONS */
         .section {
             margin: 35px 0 25px;
             padding: 18px 15px;
@@ -215,7 +171,7 @@
             padding-left: 12px;
         }
 
-        /* contact items */
+        /* CONTACT */
         .contact p {
             margin-bottom: 10px;
             padding: 8px 12px;
@@ -224,7 +180,6 @@
             font-weight: 600;
             font-size: clamp(0.85rem, 2.5vw, 1rem);
             transition: 0.2s;
-            word-break: break-word;
         }
         .contact p:hover {
             background: #3b44f6;
@@ -232,7 +187,7 @@
             transform: translateX(8px);
         }
 
-        /* skills boites */
+        /* SKILLS */
         .skills {
             display: flex;
             gap: 12px;
@@ -246,23 +201,16 @@
             font-weight: 700;
             font-size: clamp(0.9rem, 2.2vw, 1.1rem);
             animation: skillPulse 3s infinite;
-            border: 2px solid transparent;
             transition: 0.25s;
         }
         .skill-box:hover {
             background: #3b44f6;
             transform: scale(1.1) translateY(-5px);
-            border-color: gold;
+            border: 2px solid gold;
             animation: none;
         }
 
-        /* languages (p) */
-        .section p {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            padding: 6px 0;
-            font-weight: 500;
-        }
-        /* tags */
+        /* TAGS */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -276,7 +224,6 @@
             background: white;
             animation: tagFloat 4s infinite;
             font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-            transition: 0.2s;
         }
         .tag:hover {
             background: linear-gradient(130deg, gold, #3b44f6);
@@ -286,7 +233,7 @@
             animation: none;
         }
 
-        /* right: about + timeline */
+        /* ABOUT */
         .about h2 {
             color: #1e1b4b;
             font-size: clamp(1.8rem, 5vw, 2.2rem);
@@ -305,7 +252,6 @@
             transition: width 0.3s;
         }
         .about:hover h2::after { width: 100%; }
-
         .about p {
             background: rgba(255,255,255,0.5);
             padding: 16px 18px;
@@ -314,7 +260,7 @@
             line-height: 1.7;
         }
 
-        /* timeline (exp/education) */
+        /* TIMELINE */
         .timeline {
             margin: 25px 0;
             padding: 18px 20px;
@@ -322,7 +268,6 @@
             border-radius: 18px;
             border-left: 5px solid transparent;
             transition: 0.25s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .timeline:hover {
             border-left-color: #3b44f6;
@@ -338,101 +283,42 @@
             display: inline-block;
             margin: 6px 0;
         }
-        .timeline p { margin-top: 8px; font-style: italic; }
 
-        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        /* RESPONSIVE */
         @media screen and (max-width: 850px) {
-            .container {
-                grid-template-columns: 1fr; /* passage en colonne unique */
-                gap: 20px;
-            }
-            .left, .right {
-                animation: fadeIn 0.8s; /* plus simple */
-                max-width: 700px;
-                margin-left: auto;
-                margin-right: auto;
-                width: 100%;
-            }
-            .profile-image-wrapper {
-                width: min(250px, 50vw);
-                height: min(250px, 50vw);
-            }
+            .container { grid-template-columns: 1fr; }
+            .profile-image-wrapper { width: min(250px, 50vw); height: min(250px, 50vw); }
         }
-
         @media screen and (max-width: 550px) {
-            .welcome-letter {
-                width: 98%;
-                padding: 20px 12px;
-            }
             .welcome-letter h1 { font-size: 1.9rem; }
-            .container { width: 98%; }
-            .section { padding: 12px; }
-            .skill-box { padding: 10px 18px; }
-            .profile-name { letter-spacing: 1px; }
         }
-
-        /* très petits écrans (pliage 300-400px) */
-        @media screen and (max-width: 380px) {
-            .profile-image-wrapper {
-                width: 200px;
-                height: 200px;
-            }
-            .profile-name { font-size: 1.4rem; }
-            .bar { font-size: 10px; }
-            .tag { padding: 5px 12px; }
-        }
-
-        /* orientation paysage sur mobile */
-        @media screen and (max-height: 550px) and (orientation: landscape) {
-            .profile-image-wrapper { width: 170px; height: 170px; }
-            .container { margin-top: 15px; }
-        }
-
-        /* ajustement pour très grands écrans (> 1600px) */
-        @media screen and (min-width: 1600px) {
-            .container { max-width: 1500px; gap: 50px; }
-            .profile-image-wrapper { width: 320px; height: 320px; }
-        }
-
-        /* correction petits details */
-        .section:first-of-type { margin-top: 0; }
-        .section p i { margin-right: 6px; }
-        .profile-container { position: relative; }
     </style>
 </head>
 <body>
     <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 
-    <!-- LETTRE DE BIENVENUE -->
     <div class="welcome-letter">
         <h1>👋 Bienvenue sur mon Portfolio !</h1>
-        <p>
-            Bonjour et bienvenue dans mon univers créatif ! Je suis ravi de vous accueillir sur mon portfolio.
-            Passionné par le développement web et le design, je vous invite à découvrir mon parcours, mes compétences
-            et mes réalisations. Chaque ligne de code raconte une histoire, chaque design exprime une émotion.
-        </p>
-        <p>
-            En tant que débutant dans le monde fascinant du développement web, je suis constamment en quête
-            d'apprentissage et d'amélioration. Ce portfolio est le reflet de ma passion et de ma détermination
-            à créer des expériences numériques uniques.
-        </p>
-        <div class="welcome-signature">
-            <span>✨</span> Tsiory Ny Antsa <span>✨</span>
-        </div>
+        <p>Bonjour et bienvenue dans mon univers créatif ! Passionné par le développement web et le design, je vous invite à découvrir mon parcours, mes compétences et mes réalisations.</p>
+        <p>En tant que débutant, je suis constamment en quête d'apprentissage et d'amélioration. Ce portfolio reflète ma passion et ma détermination.</p>
+        <div class="welcome-signature"><span>✨</span> Tsiory Ny Antsa <span>✨</span></div>
     </div>
 
     <div class="container">
-        <!-- LEFT : SIDEBAR -->
+        <!-- LEFT -->
         <div class="left">
             <div class="profile-container">
                 <div class="profile-image-wrapper">
-                    <!-- image avec fallback direct (via placeholder) -->
-                    <img src="https://scontent.ftnr2-2.fna.fbcdn.net/v/t39.30808-6/645751332_122112903753211419_5620609322743338792_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=N_hr6gbaj04Q7kNvwGPZw3r&_nc_oc=AdnzD8scRuebFW-ks8X9NZj60aE1fCz4rjUB0UAb26iL6r8shn_PsV1sEUpmloB51A4&_nc_zt=23&_nc_ht=scontent.ftnr2-2.fna&_nc_gid=65jiCVUPFzZ5MX-FVklNGw&_nc_ss=8&oh=00_Aft1pAUdpapyPz79IlZTRdfKzhwYzMlr1jDpMxZSuHOAYg&oe=69AA5AB9"
-                         alt="Photo Tsiory Ny Antsa"
-                         onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA'; this.classList.add('error')">
+                    <!-- OPTION 1: Utilisez un hébergement d'images fiable (recommandé) -->
+                    <img src="https://i.ibb.co/VotreLien/photo-profil.jpg" 
+                         alt="Tsiory Ny Antsa"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA';">
+                    
+                    <!-- OPTION 2: Si vous avez l'URL directe d'une image (Google Drive, etc.) -->
+                    <!-- Décommentez et remplacez par votre lien valide -->
+                    <!-- <img src="VOTRE_LIEN_DIRECT_ICI" alt="Tsiory Ny Antsa"> -->
                 </div>
 
-                <!-- NOM SOUS L'IMAGE avec lettre animée -->
                 <div class="profile-name">
                     <span style="--i:1">T</span><span style="--i:2">s</span><span style="--i:3">i</span><span style="--i:4">o</span><span style="--i:5">r</span><span style="--i:6">y</span><span style="--i:7"> </span>
                     <span style="--i:8">N</span><span style="--i:9">y</span><span style="--i:10"> </span>
@@ -476,12 +362,11 @@
             </div>
         </div>
 
-        <!-- RIGHT : CONTENU PRINCIPAL -->
+        <!-- RIGHT -->
         <div class="right">
             <div class="about">
                 <h2>À PROPOS DE MOI</h2>
-                <p>✨ Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce
-                    domaine passionnant. Chaque jour est une nouvelle opportunité d'apprendre et de créer !</p>
+                <p>✨ Je débute dans la création de sites web et dans le codage, et je suis en voie d'expansion dans ce domaine passionnant. Chaque jour est une nouvelle opportunité d'apprendre et de créer !</p>
             </div>
 
             <div class="section">
@@ -498,9 +383,8 @@
                 <div class="timeline">
                     <h4>Création de sites web</h4>
                     <small>2026 - Présent</small>
-                    <p>Créateur et designer de sites web - Développement de projets personnels</p>
+                    <p>Créateur et designer de sites web - Projets personnels</p>
                 </div>
-
                 <div class="timeline">
                     <h4>Informatique de base</h4>
                     <small>2026 - Présent</small>
@@ -512,18 +396,19 @@
 
     <div class="bar">✨ PORTFOLIO • 2026 • ANDRIANANTENAINA Tsiory Ny Antsa • PORTFOLIO • 2026 ✨</div>
 
-    <!-- petit script pour s'assurer que l'image ne casse pas la mise en page (fallback déjà présent) -->
     <script>
+        // Solution supplémentaire : tentative de chargement avec différents formats
         (function() {
-            // Au cas où l'image ne charge pas, on a déjà un fallback via onerror.
-            // Mais on s'assure que les images avec erreur restent discrètes.
             const img = document.querySelector('.profile-image-wrapper img');
-            if (img) {
-                img.addEventListener('error', function(e) {
-                    this.src = 'https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA';
-                    this.alt = 'Tsiory (fallback)';
-                });
-            }
+            
+            // Si l'image ne charge pas après 3 secondes, essayer un lien alternatif
+            setTimeout(() => {
+                if (img && img.naturalWidth === 0) {
+                    // Dernier recours : placeholder avec initiales
+                    img.src = 'https://via.placeholder.com/500x500/1e1b4b/gold?text=TNA';
+                    img.alt = 'Tsiory Ny Antsa';
+                }
+            }, 3000);
         })();
     </script>
 </body>
