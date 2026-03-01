@@ -267,21 +267,58 @@
             animation: starSpin 4s linear infinite;
         }
 
-        .left img {
+        /* CORRECTION: Gestion améliorée de l'image */
+        .profile-image-wrapper {
+            position: relative;
             width: 280px;
             height: 280px;
+            margin: 0 auto;
             border-radius: 50%;
-            object-fit: cover;
-            animation: popIn 1.2s ease-out;
-            transition: all 0.5s ease;
+            overflow: hidden;
             border: 5px solid gold;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
         }
 
-        .left img:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 20px 40px rgba(59, 68, 246, 0.4);
+        .profile-image-wrapper:hover {
+            transform: scale(1.05) rotate(5deg);
             border-color: #3b44f6;
+            box-shadow: 0 20px 40px rgba(59, 68, 246, 0.4);
+        }
+
+        .profile-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: all 0.5s ease;
+        }
+
+        /* Fallback élégant si l'image ne charge pas */
+        .profile-image-wrapper img.error {
+            opacity: 0;
+        }
+
+        .profile-image-wrapper .image-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e1b4b, #3b44f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: gold;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .profile-image-wrapper img.error + .image-fallback {
+            opacity: 1;
         }
 
         .profile-name {
@@ -571,7 +608,7 @@
                 gap: 20px;
             }
 
-            .left img {
+            .profile-image-wrapper {
                 width: 250px;
                 height: 250px;
             }
@@ -585,22 +622,6 @@
             .welcome-letter h1 {
                 font-size: 2.5em;
             }
-        }
-
-        /* Correction du défaut : fallback image */
-        img {
-            background: linear-gradient(135deg, #1e1b4b, #3b44f6);
-            position: relative;
-        }
-
-        img::after {
-            content: '📸';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px;
-            color: white;
         }
     </style>
 </head>
@@ -630,7 +651,12 @@
         <!-- LEFT -->
         <div class="left">
             <div class="profile-container">
-                <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/645504955_122112858903211419_123032914395931939_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qlVCyunwGmEQ7kNvwEn2tHj&_nc_oc=AdlZ0GmiTd7KUUFWBturpoLdodKayO1iI3wlFEK3Uzv_V8Y-jR71eQaspVphFUAkniE&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=QMPgvf9zhzPaTMTt6mp1Mw&_nc_ss=8&oh=00_Afsc4tq5y3YLQ3pPIkkmcQQsw9I2G3dGXQNhdXugBLrYQA&oe=69A9F8E0" alt="Photo de profil Tsiory Ny Antsa" onerror="this.src='https://via.placeholder.com/300/1e1b4b/ffffff?text=Tsiory'">
+                <div class="profile-image-wrapper">
+                    <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/645504955_122112858903211419_123032914395931939_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qlVCyunwGmEQ7kNvwEn2tHj&_nc_oc=AdlZ0GmiTd7KUUFWBturpoLdodKayO1iI3wlFEK3Uzv_V8Y-jR71eQaspVphFUAkniE&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=QMPgvf9zhzPaTMTt6mp1Mw&_nc_ss=8&oh=00_Afsc4tq5y3YLQ3pPIkkmcQQsw9I2G3dGXQNhdXugBLrYQA&oe=69A9F8E0" 
+                         alt="Photo de profil Tsiory Ny Antsa"
+                         onerror="this.classList.add('error'); this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%231e1b4b%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22150%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ETsiory%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    <div class="image-fallback">📸</div>
+                </div>
                 
                 <!-- NOM SOUS L'IMAGE -->
                 <div class="profile-name">
